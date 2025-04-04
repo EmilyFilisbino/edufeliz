@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melhor Casal</title>
+    <style>
+        body {
+            background-color: #3705a2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.5s;
+        }
+
+        .painel {
+            background-color: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 20px;
+            text-align: center;
+            padding: 30px 20px 50px; /* Aumentei o padding-bottom */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .painel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #ff6b6b, #ff8e8e, #ffb3b3);
+        }
+
+        h2 {
+            color: #3705a2;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 40px; /* Aumentei o margin-bottom */
+            border: 5px solid #3705a2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px; /* Aumentei o espaçamento entre os botões */
+            flex-wrap: wrap;
+            margin-top: 30px; /* Adicionei margem superior */
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 100px;
+        }
+
+        #sim {
+            background-color: #082b02;
+            color: white;
+            box-shadow: 0 4px 0 #051a01;
+        }
+
+        #sim:hover {
+            background-color: #0a3a03;
+            transform: translateY(-2px);
+        }
+
+        #sim:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 0 #051a01;
+        }
+
+        #nao {
+            background-color: #7f0c0c;
+            color: white;
+            position: relative;
+            box-shadow: 0 4px 0 #4a0707;
+        }
+
+        #nao:hover {
+            background-color: #9a0f0f;
+            transform: translateY(-2px);
+        }
+
+        #nao:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 0 #4a0707;
+        }
+
+        @media (max-width: 480px) {
+            .btn-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+            
+            img {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="painel">
+        <h2>Pergunta Final antes do presente!</h2>
+        <h3>Sou a melhor namorada do mundo né?</h3>
+
+        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDh3ZTJpcmU1ZzQzaTRpYzZsdmdpY29wNGdoajd1NjRjOXRuMHV0aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9DL9tHKgDMjwzNOVMm/giphy.gif" alt="Coração pulsando">
+
+        <div class="btn-container">
+            <a href="https://youtu.be/QzWLMT74nh8?si=jnwMO-d3R86qGZjt&t=102"><button id="sim">Sim!</button></a>
+            <button onmouseover="fuja()" id="nao">Não!</button>
+        </div>
+    </div>
+
+    <script>
+        function fuja() {
+            var botaoNao = document.getElementById("nao");
+            var larguraJanela = window.innerWidth;
+            var alturaJanela = window.innerHeight;
+
+            // Limita o movimento para não sair muito da área do painel
+            var maxX = Math.min(larguraJanela - botaoNao.offsetWidth, 500);
+            var maxY = Math.min(alturaJanela - botaoNao.offsetHeight, 500);
+
+            var aleatorioX = Math.floor(Math.random() * maxX);
+            var aleatorioY = Math.floor(Math.random() * maxY);
+
+            // Ajusta para manter o botão visível
+            aleatorioX = Math.max(0, aleatorioX - 50);
+            aleatorioY = Math.max(0, aleatorioY - 50);
+
+            botaoNao.style.position = "absolute";
+            botaoNao.style.left = aleatorioX + "px";
+            botaoNao.style.top = aleatorioY + "px";
+        }
+    </script>
+</body>
+</html>

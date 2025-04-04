@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Parabéns meu Amor!</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+
+</head>
+<body>
+    <div class="birthdayCard">
+        <div class="cardFront">
+            <div class="front-text">
+                <h3 class="happy">FELIZ</h3>
+                <h2 class="bday">ANIVERSÁRIO</h2> 
+                <h4 class="toyou">Meu bem!</h4>  
+            </div>
+            <div class="inner-left-image">
+                <img src="/images/Audi.jpeg" alt="Nossa foto">
+            </div>
+            <div class="wrap-deco">
+                <div class="decorations"></div>
+                <div class="decorationsTwo"></div>
+            </div> 
+            <div class="wrap-decoTwo">
+                <div class="decorations"></div>
+                <div class="decorationsThree"></div>
+            </div>
+            <div class="plate">
+                <div class="cake"></div>
+                <div class="flame"></div>
+            </div>
+        </div>  
+        <div class="cardInside">
+            <div class="inside-text">
+                <h4 class="bday"> #Parabéns Lindão</h4>
+                <br>
+            </div>
+            <div class="wishes">
+                <p>Meu amor,</p>
+                <p>Preparei algo diferente para você, algumas palavras para reforçar meu amor por você e mais algumas surpresas;</p>
+                <p>Ass: Futura Senhora Locatelli.</p>
+                <p><a href="/index/index2.html" class="btn-galeria"> Melhores Momentos</a></p>
+                <p><a href="/index/index3.html" class="btn-galeria"> Cartinha (●'◡'●)</a></p>
+                <p><a href="/index/index4.html" class="btn-galeria"> Responda para mim...</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Versão melhorada que mantém todas as animações originais
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.birthdayCard');
+            let isOpen = false;
+            
+            // Funciona para clique e toque
+            card.addEventListener('click', function() {
+                isOpen = !isOpen;
+                
+                if(isOpen) {
+                    this.classList.add('open');
+                    this.style.transform = 'perspective(2500px) rotate(5deg)';
+                    setTimeout(() => {
+                        this.style.boxShadow = 'inset 100px 20px 100px rgba(0,0,0,.15), 0 10px 100px rgba(0,0,0,0.3)';
+                    }, 500);
+                } else {
+                    this.classList.remove('open');
+                    this.style.transform = 'perspective(2500px) rotate(0deg)';
+                    this.style.boxShadow = '';
+                }
+            });
+            
+            // Previne zoom indesejado
+            document.addEventListener('touchmove', function(e) {
+                if(e.scale !== 1) e.preventDefault();
+            }, { passive: false });
+        });
+    </script>
+</body>
+</html>
